@@ -2,18 +2,20 @@
 let listaDeNomes = [];
 
 function adicionarAmigo(){
-    let nome = document.getElementById('input').value;
+    let nome = document.querySelector('input').value;
     if (nome == ''){
-        alert('Preencha o campo de adicionar um nome')
+        alert('Preencha o campo de adicionar um nome!')
     }else {
-        listaDeNomes.push(nome.value);
+        listaDeNomes.push(nome);
 
     }
     limparCampo();
 
 }
 
+console.log(listaDeNomes);
+
 function limparCampo (){
-    nome = document.getElementById('input');
-    nome = '';
+    nome = document.querySelector('input');
+    nome.value = '';
 }
