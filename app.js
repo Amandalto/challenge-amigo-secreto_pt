@@ -1,21 +1,27 @@
-//lista de amigos 
 let listaDeNomes = [];
 
-function adicionarAmigo(){
-    let nome = document.querySelector('input').value;
-    if (nome == ''){
-        alert('Preencha o campo de adicionar um nome!')
-    }else {
+function adicionarAmigo() {
+    let nome = document.querySelector('#amigo').value;
+
+    if (nome === '') {
+        alert('Preencha o campo de adicionar um nome!');
+    } else {
         listaDeNomes.push(nome);
-
     }
-    limparCampo();
 
+    atualizarListaAmigos(); 
+    limparCampo();
 }
 
-console.log(listaDeNomes);
+function limparCampo() {
+    document.querySelector('#amigo').value = '';
+}
 
-function limparCampo (){
-    nome = document.querySelector('input');
-    nome.value = '';
+function atualizarListaAmigos() {
+    let lista = document.querySelector('#listaAmigos');
+    lista.innerHTML = "";
+
+    for (let i = 0; i < listaDeNomes.length; i++) {
+        lista.innerHTML += `<li>${listaDeNomes[i]}</li>`;
+    }
 }
