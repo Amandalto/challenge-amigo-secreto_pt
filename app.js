@@ -1,24 +1,25 @@
+
+//Variável Lista
 let listaDeNomes = [];
 
+
+//Função para adicionar amigo
 function adicionarAmigo() {
     let nome = document.querySelector('#amigo').value.trim();
 
     if (nome === '') {
         alert('Preencha o campo de adicionar nome!');
-    } else {
+    } else if (listaDeNomes.includes(nome)) {
+        alert('Este nome já foi adicionado!')
+    }else{
         listaDeNomes.push(nome);
         atualizarListaAmigos(); 
-        
         limparCampo();
     }
+
 }
 
-
-
-function limparCampo() {
-    document.querySelector('#amigo').value = '';
-}
-
+//Função para atualizar a lista de amigos
 function atualizarListaAmigos() {
     let lista = document.querySelector('#listaAmigos');
     lista.innerHTML = "";
@@ -28,14 +29,21 @@ function atualizarListaAmigos() {
     }
 }
 
+//Função para sortear a lista de amigos
 function sortearAmigo() {
     if (listaDeNomes.length < 2) {
         alert('Adicione pelo menos 2 nomes no sorteio!');
         return;
     }
 
-    let indiceAleatorio = Math.floor(Math.random() * listaDeNomes.length);
-    let nomeSorteado = listaDeNomes[indiceAleatorio];
+    let nomeAleatorio = Math.floor(Math.random() * listaDeNomes.length);
+    let nomeSorteado = listaDeNomes[nomeAleatorio];
 
     document.getElementById('resultado').innerHTML = `Nome sorteado: ${nomeSorteado}`;
+}
+
+
+//Função para limpar campo "digite um nome"
+function limparCampo() {
+    document.querySelector('#amigo').value = '';
 }
